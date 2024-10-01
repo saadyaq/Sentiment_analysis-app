@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+streamlit
+requests
+torch
+transformers==4.29.2
+scipy
+numpy
+joblib

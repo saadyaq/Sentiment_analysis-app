@@ -1,4 +1,5 @@
 import streamlit as st
+import requests
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 import numpy as np
@@ -23,9 +24,12 @@ st.title("Analyse de sentiments avec Roberta")
 user_input=st.text_area('Entrez un texte')
 if st.button('Analyser'):
     if user_input:
-        scores=polarity_scores_roberta(user_input)
-        st.write(f"Score Négatif : {scores['roberta_neg']:.4f}")
-        st.write(f"Score Neutre : {scores['roberta_neu']:.4}")
-        st.write(f"Score Positif : {scores['roberta_pos']:.4}")
+        response = requests.get(f"http://127.0.0.1:8000/analyze?text={user_input}")
+        if response.status_code==200:
+            scores=response.json()
+            scores=polarity_scores_roberta(user_input)
+            st.write(f"Score Négatif : {scores['roberta_neg']:.4f}")
+            st.write(f"Score Neutre : {scores['roberta_neu']:.4}")
+            st.write(f"Score Positif : {scores['roberta_pos']:.4}")
     else:
         st.write("Veuillez entrer un texte!")
