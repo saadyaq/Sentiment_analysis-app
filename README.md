@@ -46,8 +46,6 @@ Vous pouvez installer toutes les dépendances en utilisant le fichier `requireme
 - **sentiment_model.pkl** : Modèle Roberta pré-entraîné pour l'analyse de sentiments.
 - **tokenizer.pkl** : Tokenizer Roberta utilisé pour transformer les textes en tokens.
 
-## Auteurs
-Ce projet a été créé par [Votre Nom].
 
 ## License
 Ce projet est sous licence MIT. Voir [LICENSE](LICENSE) pour plus d'informations.
